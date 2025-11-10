@@ -24,9 +24,11 @@ while True:
     elif pilihan == "2":
         setor = int(input("\tmasukan nominal yang ingin anda setorkan : "))
         saldo += setor
+        print(f"\tSetor tunai berhasil, saldo anda : {saldo}")
     elif pilihan == "3":
         if saldo < 50000:
             print("\tmohon maaf saldo anda kurang dari 50000")
+            print(f"\tSaldo anda : {saldo}")
         elif saldo >= 50000:
             tarik = int(input("\tmasukan nominal penarikan : "))
             saldo -= tarik
