@@ -21,7 +21,9 @@ inventaris = [
     ["Resep Warisan Nenek", 22, 125000]
 ]
 
+# loop untuk mengulang program
 while True:
+    # banner
     print(f'''
     =====================================================================
     --------------- Sistem Inventasris Buku Toko 'Sukses' ---------------
@@ -33,9 +35,12 @@ while True:
     ---------------------------------------------------------------------
     ''')
 
-    pilihan = input("masukan pilihan anda (1-4) : ")
+    # mengambil input pilihan
+    pilihan = input("masukan pilihan anda (1-4) : ") 
 
+    # kondisi setiap pilihan
     if pilihan == "1":
+        # akan loop list inventaris dan mengambil semua data
         for keterangan_buku in inventaris:
             print(f"judul buku  : {keterangan_buku[0]}")
             print(f"jumlah buku : {keterangan_buku[1]}")
@@ -43,19 +48,25 @@ while True:
             print("--------------------------------")
 
     elif pilihan == "2":
+        # mengambil input
         judul = input("masukan judul \t\t: ").title()
         jumlah_buku = int(input("masukan jumlah buku \t: "))
         harga_buku = int(input("masukan harga buku \t: "))
 
+        # membuat list baru
         buku_baru = [judul, jumlah_buku, harga_buku]
+
+        # memasukan ke list utama
         inventaris.append(buku_baru)
         print(f"{WARNA_HIJAU}input berhasil✅{WARNA_RESET}")
 
     elif pilihan == "3":
+        # input buku yang dicari
         cari_buku = input("masukan judul yang dicari : ").title()
         
         ditemukan = False
 
+        # looping semua data di inventaris dan mengambil indeks 0 atau judul
         for buku in inventaris:
             if buku[0] == cari_buku:
                 print(f"Judul : {buku[0]}")
