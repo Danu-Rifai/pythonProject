@@ -30,22 +30,26 @@ while True:
     =====================================================================
         1. Tampilkan Semua Buku
         2. Tambah Buku Baru
-        3. Cari Buku
-        4. Keluar
+        3. Hapus Buku
+        4. Cari Buku
+        5. Keluar
     ---------------------------------------------------------------------
     ''')
 
+    inventaris.sort()
+
     # mengambil input pilihan
-    pilihan = input("masukan pilihan anda (1-4) : ") 
+    pilihan = input("masukan pilihan anda (1-5) : ") 
 
     # kondisi setiap pilihan
     if pilihan == "1":
         # akan loop list inventaris dan mengambil semua data
         for keterangan_buku in inventaris:
-            print(f"judul buku  : {keterangan_buku[0]}")
-            print(f"jumlah buku : {keterangan_buku[1]}")
-            print(f"harga buku  : {keterangan_buku[2]}")
-            print("--------------------------------")
+            print(f"{inventaris.index(keterangan_buku)+1} | Judul Buku : {keterangan_buku[0]} | Jumlah Buku : {keterangan_buku[1]} | Harga Buku : {keterangan_buku[2]}")
+            # print(f"judul buku  : {keterangan_buku[0]}")
+            # print(f"jumlah buku : {keterangan_buku[1]}")
+            # print(f"harga buku  : {keterangan_buku[2]}")
+            # print("--------------------------------")
 
     elif pilihan == "2":
         # mengambil input
@@ -59,8 +63,26 @@ while True:
         # memasukan ke list utama
         inventaris.append(buku_baru)
         print(f"{WARNA_HIJAU}input berhasil✅{WARNA_RESET}")
-
+    
     elif pilihan == "3":
+        buku_hapus = input("masukan judul buku yang mau dihapus : ").title()
+
+        # cari buku
+        buku_ditemukan = None
+
+        # cari buku
+        for buku in inventaris:
+            if buku[0] == buku_hapus:
+                buku_ditemukan = buku
+                break
+
+        if buku_ditemukan:
+            inventaris.remove(buku_ditemukan)
+            print(f"buku berjudul {buku_ditemukan[0]} berhasil dihapus")
+        else:
+            print(f"buku berjudul {buku_ditemukan[0]} tidak ditemukan")
+
+    elif pilihan == "4":
         # input buku yang dicari
         cari_buku = input("masukan judul yang dicari : ").title()
         
@@ -78,7 +100,7 @@ while True:
         if not ditemukan:
                 print("buku tidak ditemukan")
 
-    elif pilihan == "4":
+    elif pilihan == "5":
         break
 
     else:
