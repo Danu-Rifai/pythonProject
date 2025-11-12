@@ -26,20 +26,21 @@ while True:
     # banner
     print(f'''
     =====================================================================
-    --------------- Sistem Inventasris Buku Toko 'Sukses' ---------------
+    --------------- Sistem Inventaris Buku Toko 'Sukses' ---------------
     =====================================================================
         1. Tampilkan Semua Buku
         2. Tambah Buku Baru
         3. Hapus Buku
         4. Cari Buku
-        5. Keluar
+        5. Ubah Data
+        6. Keluar
     ---------------------------------------------------------------------
     ''')
 
     inventaris.sort()
 
     # mengambil input pilihan
-    pilihan = input("masukan pilihan anda (1-5) : ") 
+    pilihan = input("masukan pilihan anda (1-6) : ") 
 
     # kondisi setiap pilihan
     if pilihan == "1":
@@ -99,8 +100,33 @@ while True:
 
         if not ditemukan:
                 print("buku tidak ditemukan")
-
+        
     elif pilihan == "5":
+            for data_buku in inventaris:
+                print(f"{inventaris.index(data_buku)+1} | Judul Buku : {data_buku[0]} | Jumlah Buku : {data_buku[1]} | Harga Buku : {data_buku[2]}")
+
+            data_number = int(input("\ndata nomor berapa yang ingin ada ubah : "))
+            print(inventaris[data_number-1])
+            
+            perubahan = input("apa yang mau ada ubah (judul/stok/harga)? : ").lower()
+
+            if perubahan == "judul":
+                judul_baru = input("masukan judul baru : ").title()
+                inventaris[data_number-1][0] = judul_baru
+                print(f"{WARNA_HIJAU} judul berhasil diubah ✅{WARNA_RESET}")
+            elif perubahan == "stok":
+                stok_baru = int(input("masukan stok baru : "))
+                inventaris[data_number-1][1] = stok_baru
+                print(f"{WARNA_HIJAU} stok berhasil diubah ✅{WARNA_RESET}")
+            elif perubahan == "harga":
+                harga_baru = int(input("masukan harga baru : "))
+                inventaris[data_number-1][2] = harga_baru
+                print(f"{WARNA_HIJAU} harga berhasil diubah ✅{WARNA_RESET}")
+            else:
+                print(f"pilihan {perubahan} tidak ada")
+
+
+    elif pilihan == "6":
         break
 
     else:
